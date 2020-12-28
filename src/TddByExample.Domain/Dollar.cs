@@ -9,9 +9,10 @@
             Amount = amount;
         }
 
-        public void Times(int multiplier)
+        public Dollar Times(int multiplier)
         {
-            Amount *=  multiplier;
+            Amount *= Amount * multiplier;
+            return null;
         }
     }
 }
