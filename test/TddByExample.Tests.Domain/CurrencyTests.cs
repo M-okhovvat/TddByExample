@@ -7,16 +7,6 @@ namespace TddByExample.Tests.Domain
     public class CurrencyTests
     {
         [Fact]
-        public void five_dollars_multiplied_by_two_equals_ten_dollars()
-        {
-            var dollar = new Dollar(5);
-
-            dollar.Times(2);
-
-            dollar.Amount.Should().Be(10);
-        }
-
-        [Fact]
         public void five_dollar_multiplied_multiple_times()
         {
             var fiveDollars = new Dollar(5);
@@ -26,5 +16,20 @@ namespace TddByExample.Tests.Domain
             Dollar fifteenDollars = fiveDollars.Times(3);
             fifteenDollars.Amount.Should().Be(15);
         }
+
+        [Fact]
+        public void five_dollar_equals_five_dollar()
+        {
+            var fiveDollar = new Dollar(5);
+            var anotherFiveDollar = new Dollar(5);
+
+            fiveDollar.Should().Be(anotherFiveDollar);
+
+            var sixDollar = new Dollar(6);
+            var anotherSixDollar = new Dollar(7);
+
+            sixDollar.Should().NotBe(anotherSixDollar);
+        }
+   
     }
 }
