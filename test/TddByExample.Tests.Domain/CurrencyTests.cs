@@ -11,10 +11,8 @@ namespace TddByExample.Tests.Domain
         {
             var fiveDollars = new Dollar(5);
 
-            Dollar tenDollars = fiveDollars.Times(2);
-            tenDollars.Amount.Should().Be(10);
-            Dollar fifteenDollars = fiveDollars.Times(3);
-            fifteenDollars.Amount.Should().Be(15);
+            fiveDollars.Times(2).Should().Be(new Dollar(10));
+            fiveDollars.Times(3).Should().Be(new Dollar(15));
         }
 
         [Fact]
