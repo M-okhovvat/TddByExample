@@ -4,7 +4,7 @@ using Xunit;
 
 namespace TddByExample.Tests.Domain
 {
-    public class CurrencyTests
+    public partial class CurrencyTests
     {
         [Fact]
         public void five_dollar_multiplied_multiple_times()
@@ -84,27 +84,6 @@ namespace TddByExample.Tests.Domain
 
             eightFranc.Should().NotBe(null);
 
-        }
-
-
-        public class Franc
-        {
-            public Franc(int amount)
-            {
-                Amount = amount;
-            }
-
-            public int Amount { get; set; }
-
-            public Franc Times(int multipliedBy)
-            {
-                return new Franc(multipliedBy * Amount);
-            }
-            
-            public override bool Equals(object obj)
-            {
-                return ((Franc)obj).Amount == Amount;
-            }
         }
     }
 
