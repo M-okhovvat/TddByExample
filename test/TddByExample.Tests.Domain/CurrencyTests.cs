@@ -32,9 +32,11 @@ namespace TddByExample.Tests.Domain
         [Fact]
         public void define_five_franc()
         {
-            var fiveFranc = new Franc(6);
+            const int amount = 6;
 
-            fiveFranc.Amount.Should().Be(6);
+            var fiveFranc = new Franc(amount);
+
+            fiveFranc.Should().Be(new Franc(amount));
         }
 
         [Fact]
@@ -44,11 +46,11 @@ namespace TddByExample.Tests.Domain
 
             Franc tenFranc = fiveFranc.Times(2);
 
-            tenFranc.Amount.Should().Be(10);
+            tenFranc.Should().Be(new Franc(10));
 
             Franc fifteenFranc = fiveFranc.Times(3);
 
-            fifteenFranc.Amount.Should().Be(15);
+            fifteenFranc.Should().Be(new Franc(15));
         }
 
         [Fact]

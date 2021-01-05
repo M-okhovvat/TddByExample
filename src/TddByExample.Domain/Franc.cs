@@ -1,22 +1,14 @@
 ﻿namespace TddByExample.Domain
 {
-    public class Franc
+    public class Franc : Money
     {
-        public Franc(int amount)
+        public Franc(int amount) : base(amount)
         {
-            Amount = amount;
         }
-
-        public int Amount { get; set; }
 
         public Franc Times(int multipliedBy)
         {
             return new Franc(multipliedBy * Amount);
-        }
-
-        public override bool Equals(object obj)
-        {
-            return ((Franc)obj).Amount == Amount;
         }
     }
 }
