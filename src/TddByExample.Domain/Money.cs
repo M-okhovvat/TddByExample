@@ -3,7 +3,7 @@
     public abstract class Money
     {
         protected int Amount { get; set; }
-
+        protected string Currency { get; set; }
         protected Money(int amount)
         {
             Amount = amount;
@@ -17,17 +17,20 @@
 
         public static Money Dollar(int amount)
         {
-            return new Dollar(amount);
+            return new Dollar(amount, "USD");
         }
 
         public static Money Franc(int amount)
         {
-            return new Franc(amount);
+            return new Franc(amount, "CHF");
         }
 
         public abstract Money Times(int multiplyBy);
 
 
-        public abstract string Currency();
+        public string GetCurrency()
+        {
+            return Currency;
+        }
     }
 }

@@ -11,15 +11,15 @@ namespace TddByExample.Tests.Domain
         {
             Money fiveDollars = Money.Dollar(5);
 
-            fiveDollars.Times(2).Should().Be(new Dollar(10));
-            fiveDollars.Times(3).Should().Be(new Dollar(15));
+            fiveDollars.Times(2).Should().Be(Money.Dollar(10));
+            fiveDollars.Times(3).Should().Be(Money.Dollar(15));
         }
 
         [Fact]
         public void five_dollar_equals_five_dollar()
         {
             var fiveDollar = Money.Dollar(5);
-            var anotherFiveDollar = new Dollar(5);
+            var anotherFiveDollar = Money.Dollar(5);
 
             fiveDollar.Should().Be(anotherFiveDollar);
 
@@ -95,13 +95,13 @@ namespace TddByExample.Tests.Domain
         [Fact]
         public void currency_of_dollar_is_USD()
         {
-            Money.Dollar(1).Currency().Should().Be("USD");
+            Money.Dollar(1).GetCurrency().Should().Be("USD");
         }
 
         [Fact]
         public void currency_of_Franc_is_CHF()
         {
-            Money.Franc(1).Currency().Should().Be("CHF");
+            Money.Franc(1).GetCurrency().Should().Be("CHF");
         }
     }
 }
