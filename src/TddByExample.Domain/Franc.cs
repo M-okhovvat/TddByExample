@@ -6,9 +6,9 @@
         {
         }
 
-        public Franc Times(int multipliedBy)
+        public override Money Times(int multiplier)
         {
-            return new Franc(multipliedBy * Amount);
+            return new Franc(Amount * multiplier);
         }
     }
 }
