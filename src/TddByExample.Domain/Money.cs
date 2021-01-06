@@ -1,10 +1,11 @@
 ﻿namespace TddByExample.Domain
 {
-    public abstract class Money
+    public class Money
     {
         protected int Amount { get; set; }
         protected string Currency { get; set; }
-        protected Money(int amount, string currency)
+
+        public Money(int amount, string currency)
         {
             Amount = amount;
             Currency = currency;
@@ -12,8 +13,8 @@
 
         public override bool Equals(object? obj)
         {
-
-            return Amount == ((Money)obj).Amount && obj.GetType() == GetType();
+            var money = ((Money)obj);
+            return Amount == money.Amount && Currency == money.Currency;
         }
 
         public static Money Dollar(int amount)
@@ -26,7 +27,10 @@
             return new Franc(amount, "CHF");
         }
 
-        public abstract Money Times(int multiplyBy);
+        public Money Times(int multiplier)
+        {
+            return new Money(Amount * multiplier, Currency);
+        }
 
 
         public string GetCurrency()

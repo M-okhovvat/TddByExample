@@ -103,5 +103,11 @@ namespace TddByExample.Tests.Domain
         {
             Money.Franc(1).GetCurrency().Should().Be("CHF");
         }
+
+        [Fact]
+        public void two_money_with_same_currency_type_is_equal()
+        {
+            new Money(10, "CHF").Should().Be(new Franc(10, "CHF"));
+        }
     }
 }
