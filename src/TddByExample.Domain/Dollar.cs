@@ -2,9 +2,8 @@
 {
     public class Dollar : Money
     {
-        public Dollar(int amount, string currency) : base(amount)
+        public Dollar(int amount, string currency) : base(amount, currency)
         {
-            Currency = currency;
         }
 
         public override Money Times(int multiplier)

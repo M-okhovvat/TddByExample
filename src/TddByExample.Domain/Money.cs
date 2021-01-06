@@ -4,9 +4,10 @@
     {
         protected int Amount { get; set; }
         protected string Currency { get; set; }
-        protected Money(int amount)
+        protected Money(int amount, string currency)
         {
             Amount = amount;
+            Currency = currency;
         }
 
         public override bool Equals(object? obj)
