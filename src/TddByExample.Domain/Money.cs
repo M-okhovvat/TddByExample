@@ -26,5 +26,8 @@
         }
 
         public abstract Money Times(int multiplyBy);
+
+
+        public abstract string Currency();
     }
 }

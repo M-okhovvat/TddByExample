@@ -10,5 +10,10 @@
         {
             return new Franc(Amount * multiplier);
         }
+
+        public override string Currency()
+        {
+            return "CHF";
+        }
     }
 }

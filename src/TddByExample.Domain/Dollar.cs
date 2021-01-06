@@ -7,6 +7,12 @@
         {
             return new Dollar(Amount * multiplier);
         }
+
+        public override string Currency()
+        {
+            return "USD";
+        }
+
         public Dollar(int amount) : base(amount)
         {
         }

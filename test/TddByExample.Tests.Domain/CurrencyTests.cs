@@ -91,5 +91,17 @@ namespace TddByExample.Tests.Domain
 
             dollar.Should().NotBe(franc);
         }
+
+        [Fact]
+        public void currency_of_dollar_is_USD()
+        {
+            Money.Dollar(1).Currency().Should().Be("USD");
+        }
+
+        [Fact]
+        public void currency_of_Franc_is_CHF()
+        {
+            Money.Franc(1).Currency().Should().Be("CHF");
+        }
     }
 }
