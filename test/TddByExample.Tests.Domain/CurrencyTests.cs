@@ -104,5 +104,7 @@ namespace TddByExample.Tests.Domain
             Money.Franc(1).GetCurrency().Should().Be("CHF");
         }
 
+
+
     }
 }

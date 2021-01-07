@@ -37,5 +37,10 @@
         {
             return Currency;
         }
+
+        public MoneyExpression Sum(Money money)
+        {
+            return null;
+        }
     }
 }
