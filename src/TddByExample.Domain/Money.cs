@@ -1,6 +1,6 @@
 ﻿namespace TddByExample.Domain
 {
-    public class Money
+    public class Money : IMoneyExpression
     {
         protected int Amount { get; set; }
         protected string Currency { get; set; }
@@ -15,6 +15,11 @@
         {
             var money = ((Money)obj);
             return Amount == money.Amount && Currency == money.Currency;
+        }
+
+        public Money Reduce(string toCurrency)
+        {
+            return this;
         }
 
         public static Money Dollar(int amount)
@@ -32,15 +37,19 @@
             return new Money(Amount * multiplier, Currency);
         }
 
-
         public string GetCurrency()
         {
             return Currency;
         }
 
-        public MoneyExpression Sum(Money money)
+        public IMoneyExpression Plus(Money money)
         {
-            return null;
+            return new Sum(this, money);
+        }
+
+        public int GetAmount()
+        {
+            return Amount;
         }
     }
 }

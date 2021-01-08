@@ -2,9 +2,9 @@
 {
     public class Bank
     {
-        public Money Reduce(MoneyExpression expression, string toCurrency)
+        public Money Reduce(IMoneyExpression expression, string toCurrency)
         {
-            return Money.Dollar(9);
+            return ((Sum)expression).Reduce(toCurrency);
         }
     }
 }
