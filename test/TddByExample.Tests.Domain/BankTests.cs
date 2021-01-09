@@ -42,5 +42,18 @@ namespace TddByExample.Tests.Domain
 
             reducedMoney.Should().Be(Money.Dollar(11));
         }
+
+        [Fact]
+        public void exchange_franc_to_dollar_when_rate_is_two_one()
+        {
+            var franc = Money.Franc(2);
+            var bank = new Bank();
+
+            bank.AddRate("USD", "CHF", 2);
+            var reducedMoney = bank.Reduce(franc, "USD");
+
+            var expected = Money.Dollar(1);
+            reducedMoney.Should().Be(expected);
+        }
     }
 }

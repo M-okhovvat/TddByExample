@@ -11,7 +11,7 @@
             AddEnd = addEnd;
         }
 
-        public Money Reduce(string toCurrency)
+        public Money Reduce(string toCurrency, Bank bank)
         {
             var addEnd = AddEnd.GetAmount();
             var augEnd = AugEnd.GetAmount();

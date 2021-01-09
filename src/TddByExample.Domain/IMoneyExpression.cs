@@ -2,6 +2,6 @@
 {
     public interface IMoneyExpression
     {
-        Money Reduce(string toCurrency);
+        Money Reduce(string toCurrency, Bank bank);
     }
 }

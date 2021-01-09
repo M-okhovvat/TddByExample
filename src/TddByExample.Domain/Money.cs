@@ -17,9 +17,11 @@
             return Amount == money.Amount && Currency == money.Currency;
         }
 
-        public Money Reduce(string toCurrency)
+        public Money Reduce(string toCurrency, Bank bank)
         {
-            return this;
+            decimal rate = bank.GetRate(Currency, toCurrency);
+            var amount = (int)(Amount * rate);
+            return new Money(amount, toCurrency);
         }
 
         public static Money Dollar(int amount)
