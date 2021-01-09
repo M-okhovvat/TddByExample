@@ -49,7 +49,7 @@ namespace TddByExample.Tests.Domain
             var franc = Money.Franc(2);
             var bank = new Bank();
 
-            bank.AddRate("USD", "CHF", 2);
+            bank.AddRate("CHF", "USD", 0.5m);
             var reducedMoney = bank.Reduce(franc, "USD");
 
             var expected = Money.Dollar(1);
