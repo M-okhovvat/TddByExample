@@ -19,7 +19,9 @@
 
         public Money Reduce(string toCurrency, Bank bank)
         {
-            decimal rate = bank.GetRate(Currency, toCurrency);
+
+
+            decimal rate = bank.Rate(Currency, toCurrency);
             var amount = (int)(Amount * rate);
             return new Money(amount, toCurrency);
         }

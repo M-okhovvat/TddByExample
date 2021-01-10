@@ -8,7 +8,6 @@ namespace TddByExample.Domain
 
         public Money Reduce(IMoneyExpression expression, string toCurrency)
         {
-
             return expression.Reduce(toCurrency, this);
         }
 
@@ -18,12 +17,12 @@ namespace TddByExample.Domain
             _rates.Add(pair, rate);
         }
 
-        public decimal GetRate(string from, string to)
+        public decimal Rate(string from, string to)
         {
+            if (from.Equals(to)) return 1;
             var key = new Pair(from, to);
             var rate = _rates.GetValueOrDefault(key);
             return rate;
-
         }
     }
 }

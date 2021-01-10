@@ -44,7 +44,7 @@ namespace TddByExample.Tests.Domain
         }
 
         [Fact]
-        public void exchange_franc_to_dollar_when_rate_is_two_one()
+        public void exchange_franc_to_dollar_when_rate_is_two_to_one()
         {
             var franc = Money.Franc(2);
             var bank = new Bank();
@@ -54,6 +54,41 @@ namespace TddByExample.Tests.Domain
 
             var expected = Money.Dollar(1);
             reducedMoney.Should().Be(expected);
+        }
+
+        [Fact]
+        public void exchange_dollar_to_franc_when_rate_is_one_to_two()
+        {
+            var dollar = Money.Dollar(2);
+            var bank = new Bank();
+
+            bank.AddRate("USD", "CHF", 2);
+            var reducedMoney = bank.Reduce(dollar, "CHF");
+
+            var expected = Money.Franc(4);
+            reducedMoney.Should().Be(expected);
+        }
+
+        [Fact]
+        public void exchange_dollar_to_dollar_when_rate_is_one_to_one()
+        {
+            var dollar = Money.Dollar(1);
+            var bank = new Bank();
+
+            var reducedMoney = bank.Reduce(dollar, "USD");
+
+            var expected = Money.Dollar(1);
+            reducedMoney.Should().Be(expected);
+        }
+
+        [Fact]
+        public void exchange_rate_for_changing_dollar_to_dollar_is_one()
+        {
+            var bank = new Bank();
+
+            var rate = bank.Rate("USD", "USD");
+
+            rate.Should().Be(1);
         }
     }
 }
