@@ -90,5 +90,42 @@ namespace TddByExample.Tests.Domain
 
             rate.Should().Be(1);
         }
+
+        [Fact]
+        public void sum_of_two_franc_with_one_dollar__equals_to_two_dollar() // 2 CHF + 1 USD = 2 USD
+        {
+            var franc = Money.Franc(2);
+            var dollar = Money.Dollar(1);
+            var bank = new Bank();
+            bank.AddRate("USD", "CHF", 2);
+            bank.AddRate("CHF", "USD", 0.5m);
+            var sum = new Sum(dollar, franc);
+
+            var reducedAmount = bank.Reduce(sum, "USD");
+
+            var expected = Money.Dollar(2);
+            reducedAmount.Should().Be(expected);
+        }
+
+        [Fact]
+        public void sum_of_two_franc_with_one_dollar_equals_to_four_dollar() // 2 CHF + 1 USD = 4 CHF
+        {
+            var franc = Money.Franc(2);
+            var dollar = Money.Dollar(1);
+            var bank = new Bank();
+            bank.AddRate("USD", "CHF", 2);
+            bank.AddRate("CHF", "USD", 0.5m);
+            var sum = new Sum(franc, dollar);
+
+            var reducedAmount = bank.Reduce(sum, "CHF");
+
+            var expected = Money.Franc(4);
+            reducedAmount.Should().Be(expected);
+
+            var sumResult = new Sum(dollar, franc);
+            var reducedAmountResult = bank.Reduce(sumResult, "CHF");
+
+            reducedAmountResult.Should().Be(expected);
+        }
     }
 }

@@ -12,10 +12,21 @@
         }
 
         public Money Reduce(string toCurrency, Bank bank)
-        {
-            var addEnd = AddEnd.GetAmount();
-            var augEnd = AugEnd.GetAmount();
-            return new Money(addEnd + augEnd, toCurrency);
+        { //addEnd : 2 CHF , augEnd: 1 USD
+            var addEndAmount = AddEnd.GetAmount();
+            var augEndAmount = AugEnd.GetAmount();
+            var addEndCurrency = AddEnd.GetCurrency();
+            var augEndCurrency = AugEnd.GetCurrency();
+
+            var addEndToExpectedExchangeRate = bank.Rate(addEndCurrency, toCurrency);
+            var augEndToExpectedExchangeRate = bank.Rate(augEndCurrency, toCurrency);
+
+            var addEndExchangedAmount = addEndAmount * addEndToExpectedExchangeRate;
+            var augEndExchangedAmount = augEndAmount * augEndToExpectedExchangeRate;
+
+
+
+            return new Money((int)(addEndExchangedAmount + augEndExchangedAmount), toCurrency);
         }
     }
 }
