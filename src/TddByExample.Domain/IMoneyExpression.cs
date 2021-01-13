@@ -4,6 +4,6 @@
     {
         Money Reduce(string toCurrency, Bank bank);
 
-        IMoneyExpression Plus(IMoneyExpression franc);
+        IMoneyExpression Plus(IMoneyExpression moneyExpression);
     }
 }

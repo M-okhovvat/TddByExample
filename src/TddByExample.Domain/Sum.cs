@@ -12,14 +12,13 @@
         }
 
         public Money Reduce(string toCurrency, Bank bank)
-        { //addEnd : 2 CHF , augEnd: 1 USD
-            var addEndAmount = AddEnd.Reduce(toCurrency, bank).GetAmount();
-            var augEndAmount = AugEnd.Reduce(toCurrency, bank).GetAmount();
-
-            return new Money((int)(addEndAmount + augEndAmount), toCurrency);
+        {
+            var addEnd = AddEnd.Reduce(toCurrency,bank).GetAmount();
+            var augEnd = AugEnd.Reduce(toCurrency,bank).GetAmount();
+            return new Money(addEnd + augEnd, toCurrency);
         }
 
-        public IMoneyExpression Plus(IMoneyExpression franc)
+        public IMoneyExpression Plus(IMoneyExpression moneyExpression)
         {
             return null;
         }
