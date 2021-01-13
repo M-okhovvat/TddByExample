@@ -2,20 +2,26 @@
 {
     public class Sum : IMoneyExpression
     {
-        public Money AugEnd { get; private set; }
-        public Money AddEnd { get; private set; }
+        public IMoneyExpression AugEnd { get; private set; }
+        public IMoneyExpression AddEnd { get; private set; }
 
-        public Sum(Money augEnd, Money addEnd)
+        public Sum(IMoneyExpression augEnd, IMoneyExpression addEnd)
         {
             AugEnd = augEnd;
             AddEnd = addEnd;
         }
 
         public Money Reduce(string toCurrency, Bank bank)
+        { //addEnd : 2 CHF , augEnd: 1 USD
+            var addEndAmount = AddEnd.Reduce(toCurrency, bank).GetAmount();
+            var augEndAmount = AugEnd.Reduce(toCurrency, bank).GetAmount();
+
+            return new Money((int)(addEndAmount + augEndAmount), toCurrency);
+        }
+
+        public IMoneyExpression Plus(IMoneyExpression franc)
         {
-            var addEnd = AddEnd.GetAmount();
-            var augEnd = AugEnd.GetAmount();
-            return new Money(addEnd + augEnd, toCurrency);
+            return null;
         }
     }
 }

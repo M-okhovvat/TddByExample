@@ -19,11 +19,14 @@
 
         public Money Reduce(string toCurrency, Bank bank)
         {
-
-
             decimal rate = bank.Rate(Currency, toCurrency);
             var amount = (int)(Amount * rate);
             return new Money(amount, toCurrency);
+        }
+
+        public IMoneyExpression Plus(IMoneyExpression addEnd)
+        {
+            return new Sum(this, addEnd);
         }
 
         public static Money Dollar(int amount)
