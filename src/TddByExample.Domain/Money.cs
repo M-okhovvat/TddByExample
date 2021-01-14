@@ -39,11 +39,6 @@
             return new Money(amount, "CHF");
         }
 
-        public Money Times(int multiplier)
-        {
-            return new Money(Amount * multiplier, Currency);
-        }
-
         public string GetCurrency()
         {
             return Currency;
@@ -58,5 +53,11 @@
         {
             return Amount;
         }
+
+        public IMoneyExpression Times(int multiply)
+        {
+            return new Money(Amount * multiply, Currency);
+        }
+
     }
 }

@@ -127,24 +127,4 @@ namespace TddByExample.Tests.Domain
             reducedAmountResult.Should().Be(expected);
         }
     }
-
-    public class SumTests
-    {
-        [Fact]
-        public void sum_plus_tests()
-        {
-            var oneDollar = Money.Dollar(1);
-            var twoFranc = Money.Franc(2);
-            var bank = new Bank();
-            bank.AddRate("CHF", "USD", 0.5m);
-            bank.AddRate("USD", "CHF", 2);
-            var sum = new Sum(oneDollar, twoFranc);
-            var sumExpression = sum.Plus(twoFranc);
-
-            var reducedAmount = bank.Reduce(sumExpression, "CHF");
-
-            var expectedResult = Money.Franc(6);
-            reducedAmount.Should().Be(expectedResult);
-        }
-    }
 }

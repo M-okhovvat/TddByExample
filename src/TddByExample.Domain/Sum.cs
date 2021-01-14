@@ -22,5 +22,10 @@
         {
             return new Sum(this, moneyExpression);
         }
+
+        public IMoneyExpression Times(int multiply)
+        {
+            return new Sum(AugEnd.Times(multiply), AddEnd.Times(multiply));
+        }
     }
 }
