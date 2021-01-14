@@ -13,14 +13,14 @@
 
         public Money Reduce(string toCurrency, Bank bank)
         {
-            var addEnd = AddEnd.Reduce(toCurrency,bank).GetAmount();
-            var augEnd = AugEnd.Reduce(toCurrency,bank).GetAmount();
+            var addEnd = AddEnd.Reduce(toCurrency, bank).GetAmount();
+            var augEnd = AugEnd.Reduce(toCurrency, bank).GetAmount();
             return new Money(addEnd + augEnd, toCurrency);
         }
 
         public IMoneyExpression Plus(IMoneyExpression moneyExpression)
         {
-            return null;
+            return new Sum(this, moneyExpression);
         }
     }
 }
